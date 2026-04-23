@@ -38,7 +38,7 @@ ROIScholar is a transparent, data-driven platform that helps STEM students under
 ```text
 ROIScholar/
 │
-├── frontend/                          # React Frontend Application
+├── frontend/                          # React + Vite Frontend Application
 │   ├── public/
 │   │   ├── index.html
 │   │   ├── favicon.ico
@@ -160,7 +160,7 @@ ROIScholar/
 │   ├── vite.config.js
 │   └── README.md
 │
-├── backend/                           # Node.js/Express Backend
+├── backend/                           # Node.js + Express Backend
 │   ├── src/
 │   │   ├── config/                    # Configuration
 │   │   │   ├── database.js
@@ -218,36 +218,14 @@ ROIScholar/
 │   ├── package.json
 │   └── server.js
 │
-├── database/                          # Database Files
-│   ├── migrations/
-│   ├── seeds/
-│   └── schema.sql
-│
-├── docs/                              # Documentation
-│   ├── API.md
-│   ├── DEPLOYMENT.md
-│   ├── CONTRIBUTING.md
-│   └── USER_GUIDE.md
-│
-├── tests/                             # Test Files
-│   ├── unit/
-│   ├── integration/
-│   ├── e2e/
-│   └── fixtures/
-│
-├── scripts/                           # Utility Scripts
-│   ├── seedDatabase.js
-│   ├── backupDatabase.js
-│   └── deploy.sh
-│
-├── .gitignore
 ├── .dockerignore
+├── .env.example
+├── .gitignore
 ├── docker-compose.yml
 ├── Dockerfile
-├── README.md
 ├── LICENSE
 ├── package.json
-└── .env.example
+└── README.md
 ```
 
 ## 🚀 Tech Stack
