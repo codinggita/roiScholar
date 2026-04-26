@@ -4,9 +4,14 @@ import * as Yup from 'yup';
 import { TextField, Button, IconButton, InputAdornment, Divider } from '@mui/material';
 import { Visibility, VisibilityOff, Google, LinkedIn } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { loginStart, loginSuccess, loginFailure } from '../../features/auth/authSlice';
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -21,9 +26,25 @@ const LoginForm = () => {
         .min(6, 'Password must be at least 6 characters')
         .required('Password is required'),
     }),
-    onSubmit: (values) => {
-      console.log('Login attempt', values);
-      // TODO: Dispatch login action / connect to auth service
+    onSubmit: async (values) => {
+      dispatch(loginStart());
+      
+      // Simulate API call delay
+      setTimeout(() => {
+        if (values.email === 'admin@roischolar.com' && values.password === 'Password123') {
+          const dummyUser = {
+            id: '1',
+            name: 'John Doe',
+            email: 'admin@roischolar.com',
+            role: 'premium'
+          };
+          dispatch(loginSuccess({ user: dummyUser, token: 'dummy-jwt-token' }));
+          navigate('/dashboard');
+        } else {
+          dispatch(loginFailure('Invalid email or password'));
+          alert('Invalid credentials! Try: admin@roischolar.com / Password123');
+        }
+      }, 1000);
     },
   });
 
